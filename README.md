@@ -20,3 +20,6 @@ com um botão para zerar o resultado e voltar ao início.
 Receber atividade
 
 https://almeida-cma.github.io/receber/
+
+Para atividade do Market:
+https://kahoot.it/challenge/09269396?challenge-id=b4c24f45-a0df-4a6b-892a-ebc36c43780b_1710771222980
