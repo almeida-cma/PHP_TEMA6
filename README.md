@@ -16,3 +16,7 @@ Na primeira tela receba o nome do participante;
 Faça 5 perguntas em sequência;
 Na última página exiba o resultado com a quantidade de acertos do participante juntamente
 com um botão para zerar o resultado e voltar ao início.
+
+Receber atividade
+
+https://almeida-cma.github.io/receber/
