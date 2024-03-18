@@ -1,0 +1,95 @@
+/* assets/css/style.css */
+
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #f8f8f8;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 20px;
+}
+
+.produto {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    background-color: #fff;
+    border-radius: 5px;
+    height: 300px; /* Altura fixa para os elementos .produto */
+}
+
+.produto:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.produto img {
+    max-width: 100%;
+    max-height: 150px; /* Redução adicional da altura máxima das imagens */
+    height: auto;
+    margin-bottom: 10px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+main {
+    margin-bottom: 50px; /* Ajuste para o footer */
+}
+
+/* Adicione uma classe específica para a página de detalhes do produto */
+.product-detail {
+    max-width: 50%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.product-detail img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
