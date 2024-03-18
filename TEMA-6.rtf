@@ -1,0 +1,256 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat{\fonttbl{\f0\fnil\fcharset0 Calibri;}{\f1\fnil\fcharset0 Arial-BoldMT;}{\f2\fnil\fcharset0 Calibri-Bold;}}
+{\colortbl ;\red0\green0\blue0;\red255\green255\blue0;\red89\green52\blue148;\red0\green255\blue255;\red0\green77\blue187;}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sl240\slmult1\qj\f0\fs22\lang22 TEMA 6 - \b\fs32 M\'e9todo de envio com GET e POST\par
+\fs28\par
+\cf1\b0\fs22 Dentro das linguagens de programa\'e7\'e3o \ul precisamos ter um maneira para enviar os dados entre a pr\'f3pria linguagem e para a base de dados\ulnone , para enviar os dados que se encontra no formul\'e1rio do html, vamos utilizar o \highlight2 m\'e9todo post e get, que colocamos dentro da tag form no par\'e2metro method\highlight0 .\par
+\par
+\cf3\b\f1 6.1 \f2\fs28 Introdu\'e7\'e3o sobre o conceito de envio GET e POST com HTML 5\par
+\cf1\b0\f0\fs22 Os m\'e9todos que vamos ver agora s\'e3o usados na sintaxe de estrutura do PHP, \highlight4\b sendo o get meio de envio pela url e o post por maneira de aquisi\'e7\'e3o de dados\highlight0\b0 , ambos seguros mais com maneiras de envios diferentes. Os dois m\'e9todos que vamos estudar agora precisam do formul\'e1rio do html.\par
+\cf3\b\f1\par
+6.2 \f2\fs28 M\'e9todo POST e GET\par
+\par
+\b0\f0\fs26 M\'e9todo GET\par
+\cf1\fs22 Nesse m\'e9todo os dados s\'e3o enviados juntamente com o nome da p\'e1gina, no caso pela url, m\'e9todo muito usado por se tratar de uma maneira r\'e1pida de envio ele n\'e3o suporta dados com um poder muito grande. \highlight4\b Esse m\'e9todo \'e9 considerado o padr\'e3o do HTML, caso n\'e3o especificado no method, ele que sempre vai estar dispon\'edvel\highlight0\b0 .\par
+\par
+\cf3\fs26 Formul\'e1rio do HTML\par
+\par
+\cf5\fs22 <!DOCTYPE html>\par
+<html>\par
+<head>\par
+  <title>Aula de m\'e9todo</title>\par
+</head>\par
+<body>\par
+  <form action="pag.php" method="get">\par
+    Nome: <input type="text" name="cxnome">\par
+    <input type="submit" value="Enviar">\par
+  </form>\par
+</body>\par
+</html>\par
+\par
+
+\pard\cf0\b\f2 Form \b0\f0\'e9 a tag usado no html para criar um formul\'e1rio\par
+\b\f2 Action \b0\f0\'e9 para onde os dados v\'e3o quando clicar no bot\'e3o enviar no caso vai para a pagina\par
+\ldblquote pag.php\rdblquote .\par
+\b\f2 Name \b0\f0\'e9 o par\'e2metro usado para rotular a caixa do input.\par
+\b\f2 Method \b0\f0\'e9 o m\'e9todo que vamos usar para enviar os dados no caso agora vai ser o GET.\par
+\b\f2 Pagina que vai receber os dados\par
+\par
+
+\pard\sl240\slmult1\qj\b0\f0 pag.php\par
+\par
+\cf5 <?php\par
+$nome = $_GET["cxnome"];\par
+echo "Nome: " . $nome;\par
+?>\par
+\par
+\cf0\b\f2 $nome \b0\f0\'e9 a vari\'e1vel que est\'e1 recebendo o nome pela caixa input dado o \b\f2 name de cxnome.\par
+$_GET[\ldblquote  \rdblquote ] \b0\f0\'e9 o par\'e2metro que sempre vamos usar para receber os dados do formul\'e1rio, \cf1 dentro dos colchetes colocamos o nome do input.\par
+\par
+\cf3\fs26 M\'e9todo POST\par
+\cf1\fs22 No \highlight4\b m\'e9todo POST, n\'e3o \'e9 poss\'edvel passar dados no caso par\'e2metros pela URL\highlight0\b0 , somente pelo formul\'e1rio, por aquisi\'e7\'e3o de informa\'e7\'e3o do usu\'e1rio. Ele tamb\'e9m vai seguir a mesma sintaxe usada no GET, considerado um \ul\b m\'e9todo mais seguro por n\'e3o mostrar na url para onde os dados est\'e3o sendo enviados\ulnone\b0 . M\'e9todo \ul\b muito usado para guardar dados no servidor de dados\ulnone\b0 , com maior poder de gerenciar dados, para criar um CRUD, esse m\'e9todo \'e9 o mais recomendado.\par
+\par
+\cf3\fs26 Formul\'e1rio do HTML\par
+\par
+\cf5\fs22 <!DOCTYPE html>\par
+<html>\par
+<head>\par
+  <title>Aula de m\'e9todo</title>\par
+</head>\par
+<body>\par
+  <form action="pag.php" method="post">\par
+    Nome: <input type="text" name="cxnome">\par
+    <input type="submit" value="Enviar">\par
+  </form>\par
+</body>\par
+</html>\par
+\par
+
+\pard\cf1 Seguindo o mesmo exemplo do m\'e9todo get, s\'f3 mudamos para POST no par\'e2metro method.\par
+\par
+\cf3\fs26 Pagina que vai receber os dados\par
+\par
+\cf5\fs22 <?php\par
+$nome = $_POST["cxnome"];\par
+echo "Nome: " . $nome;\par
+?>\par
+\par
+\cf0 Seguindo a mesma ideia do m\'e9todo get, agora a vari\'e1vel muda para $_POST[\ldblquote  \rdblquote ], para receber do formul\'e1rio que est\'e1 usando o m\'e9todo post.\par
+\par
+\cf3\b\f1 6.3 \f2\fs28 Include e Require suas diferen\'e7as e particularidades\par
+\par
+
+\pard\sl240\slmult1\qj\cf0\b0\f0\fs22 Vamos agora incluir arquivos em p\'e1ginas PHP, usando os comandos require() e include(), que s\'e3o respons\'e1veis por realizar a leitura das tags PHP e executar dentro delas, por via de c\'f3digo.\par
+A grande diferen\'e7a entre esses dois elementos que vamos falar agora \'e9 que o \highlight4\b include(), trabalha em tempo real\highlight0\b0 , exemplo podemos \highlight4\b usar ele nos la\'e7os de repeti\'e7\'e3o\highlight0\b0 , j\'e1 o require() n\'e3o tem esse time real.\par
+\par
+\b\f2 Include_once e require_once\par
+\b0\f0 Estes dois comandos tamb\'e9m chamados de express\'f5es trabalham de maneira id\'eantica ao include e require padr\'e3o, a \'fanica diferen\'e7a entre eles quando usamos o _once, o arquivo ser\'e1 inclu\'eddo uma \'fanica vez ou seja executado s\'f3 um de cada vez, por isso que vamos usar esses dois comando nas conex\'e3o de banco de dados.\par
+\par
+Veja o exemplo: Arquivo: pagina.php\par
+\par
+pagina.php\par
+\par
+\cf5 <?php\par
+\tab $escola = "Proz - Educa\'e7\'e3o Profissional";\par
+?>\par
+\cf0\par
+pagina2.php\par
+\par
+\cf5 <?php\par
+\tab include "pagina.php";\par
+\tab echo "Escola " . $escola;\par
+?>\par
+\par
+
+\pard\cf0 As p\'e1ginas que v\'e3o receber os arquivos, no cabe\'e7alho da p\'e1gina precisamos digitar o comando include ou require, a\'ed tudo que temos nessa p\'e1gina podemos reutilizar.\par
+\par
+Ambos os exemplos incluem o arquivo arquivo_incluido.php, que define uma vari\'e1vel $mensagem. A diferen\'e7a \'e9 como eles lidam com a falta desse arquivo:\par
+\par
+Se o arquivo arquivo_incluido.php n\'e3o for encontrado, o exemplo usando include emitir\'e1 apenas um aviso, permitindo que o script continue a ser executado, embora a vari\'e1vel $mensagem n\'e3o seja definida.\par
+\par
+base.php\line\line\cf5 <!DOCTYPE html>\par
+<html lang="pt-br">\par
+<head>\par
+    <meta charset="UTF-8">\par
+    <title>Exemplo de Include</title>\par
+</head>\par
+<body>\par
+    <h1>Exemplo de Include</h1>\par
+\b     <?php\par
+    // Incluindo o arquivo arquivo_incluido.php\par
+    include 'arquivo_incluido.php';\par
+    \par
+    // Usando a vari\'e1vel definida no arquivo inclu\'eddo\par
+    echo "<p>$mensagem</p>";\par
+    echo "<h1>Final script</h1>";\par
+    ?>\par
+\b0 </body>\par
+</html>\par
+\par
+\cf0 arquivo_incluido.php\par
+\par
+\cf5\b <?php\par
+// Arquivo: arquivo_incluido.php\par
+$mensagem = "Este \'e9 um arquivo inclu\'eddo usando include.";\par
+?>\par
+\cf0\b0\par
+Por outro lado, se o arquivo arquivo_incluido.php n\'e3o for encontrado no exemplo usando require, o PHP emitir\'e1 um erro fatal e interromper\'e1 a execu\'e7\'e3o do script imediatamente.\cf5\par
+
+\pard\sl240\slmult1\qj\cf0\par
+base.php\par
+\line\cf5 <!DOCTYPE html>\par
+<html lang="pt-br">\par
+<head>\par
+    <meta charset="UTF-8">\par
+    <title>Exemplo de Require</title>\par
+</head>\par
+<body>\par
+    <h1>Exemplo de Require</h1>\par
+\b     <?php\par
+    // Incluindo o arquivo arquivo_incluido.php\par
+    require 'arquivo_incluido.php';\par
+    \par
+    // Usando a vari\'e1vel definida no arquivo inclu\'eddo\par
+    echo "<p>$mensagem</p>";\par
+\tab echo "<h1>Final script</h1>";\par
+    ?>\par
+\b0 </body>\par
+</html>\par
+\par
+
+\pard\cf0 arquivo_incluido.php\par
+\par
+\cf5\b <?php\par
+// Arquivo: arquivo_incluido.php\par
+$mensagem = "Este \'e9 um arquivo inclu\'eddo usando require.";\par
+?>\par
+
+\pard\sl240\slmult1\qj\cf0\b0\par
+\par
+\b Resumo:\par
+\cf5\b0\par
+
+\pard\qj\cf1 Neste cap\'edtulo, abordamos os m\'e9todos de envio GET e POST, fundamentais para a comunica\'e7\'e3o entre linguagens de programa\'e7\'e3o e bases de dados. Ambos os m\'e9todos s\'e3o utilizados em conjunto com formul\'e1rios HTML, permitindo a transfer\'eancia de dados.\par
+No m\'e9todo GET, os dados s\'e3o enviados pela URL, tornando-o r\'e1pido e f\'e1cil de implementar.\par
+\'c9 o m\'e9todo padr\'e3o do HTML e amplamente dispon\'edvel. Explicamos a estrutura de um formul\'e1rio HTML e como os dados s\'e3o recebidos no PHP usando $_GET.\par
+Por outro lado, o m\'e9todo POST \'e9 mais seguro, pois n\'e3o exibe os dados na URL. \'c9 recomendado para opera\'e7\'f5es que envolvem o armazenamento de dados no servidor, como a cria\'e7\'e3o de um CRUD. Demonstramos a configura\'e7\'e3o de um formul\'e1rio HTML para usar o m\'e9todo POST e como os dados s\'e3o recebidos no PHP usando $_POST.\par
+Al\'e9m disso, discutimos as diferen\'e7as entre os comandos require() e include() para incluir arquivos PHP em p\'e1ginas, destacando que o include() funciona em tempo real, enquanto o require() n\'e3o. Tamb\'e9m apresentamos as variantes include_once e require_once, que garantem a inclus\'e3o \'fanica de arquivos, adequadas para conex\'f5es de banco de dados.Esses conceitos s\'e3o essenciais para entender como transmitir e manipular dados em desenvolvimento backend, permitindo a intera\'e7\'e3o eficaz com bancos de dados e outros componentes do sistema.\par
+\par
+\cf0 ATIVIDADES:\par
+\cf5\par
+\cf0 1. Qual \'e9 a principal diferen\'e7a entre os m\'e9todos GET e POST em termos de visibilidade dos dados enviados? D\'ea um exemplo de quando a visibilidade dos dados na URL pode ser um problema.\par
+\par
+2. Liste pelo menos tr\'eas atributos essenciais da tag <form> em HTML e explique a fun\'e7\'e3o de cada um deles.\par
+3. Se voc\'ea deseja incluir um arquivo PHP em uma p\'e1gina, qual comando PHP voc\'ea usaria e por qu\'ea: require() ou include()? Explique.\par
+\par
+4. Qual \'e9 a principal vantagem de usar o require_once em vez do require ao incluir arquivos em uma p\'e1gina PHP? D\'ea um exemplo de quando essa vantagem seria \'fatil.\par
+\par
+5. Crie um exemplo de formul\'e1rio HTML que colete informa\'e7\'f5es de um usu\'e1rio, como nome, idade e endere\'e7o de e-mail, e utilize o m\'e9todo POST para enviar esses dados para uma p\'e1gina PHP. Descreva como acessar esses dados na p\'e1gina PHP.\par
+\par
+6. Explique sobre essa linha de comando <form action=\rdblquote pag.php\rdblquote  method=\rdblquote POST\rdblquote >\par
+\par
+7. Qual \'e9 o m\'e9todo usado para enviar dados via URL?\par
+\par
+8. Qual \'e9 a principal diferen\'e7a entre include e require?\par
+\par
+9.Desenvolva um cen\'e1rio hipot\'e9tico em que o uso do m\'e9todo GET para enviar dados de um formul\'e1rio seria inadequado devido \'e0 natureza dos dados. Justifique sua escolha pelo m\'e9todo POST.\par
+\par
+10. Compare e contraste os m\'e9todos de envio GET e POST em rela\'e7\'e3o \'e0 seguran\'e7a e aos tipos de dados que podem ser transmitidos. D\'ea exemplos de situa\'e7\'f5es em que voc\'ea usaria um m\'e9todo em vez do outro.\par
+\par
+\b Respostas:\par
+\b0\par
+1. A principal diferen\'e7a entre os m\'e9todos GET e POST em termos de visibilidade dos dados enviados \'e9 que no m\'e9todo GET, os dados s\'e3o anexados \'e0 URL, tornando-os vis\'edveis na barra de endere\'e7os do navegador, enquanto no m\'e9todo POST, os dados s\'e3o enviados no corpo da requisi\'e7\'e3o HTTP e n\'e3o s\'e3o vis\'edveis na URL. Um exemplo de quando a visibilidade dos dados na URL pode ser um problema \'e9 ao enviar informa\'e7\'f5es sens\'edveis, como senhas, atrav\'e9s do m\'e9todo GET, pois esses dados podem ser facilmente interceptados e visualizados por terceiros.\par
+\par
+2. Tr\'eas atributos essenciais da tag `<form>` em HTML s\'e3o:\par
+   - `action`: Especifica para onde os dados do formul\'e1rio ser\'e3o enviados quando o formul\'e1rio for submetido.\par
+   - `method`: Define o m\'e9todo HTTP a ser usado para enviar os dados do formul\'e1rio (GET ou POST).\par
+   - `name`: Um nome opcional para o formul\'e1rio, que pode ser usado para referenci\'e1-lo em scripts ou estiliza\'e7\'f5es.\par
+\par
+3. Se deseja incluir um arquivo PHP em uma p\'e1gina, o comando PHP que voc\'ea usaria depende da necessidade. Se o arquivo PHP inclu\'eddo for essencial para o funcionamento da p\'e1gina, \'e9 recomendado usar `require()` porque ele interromper\'e1 o script caso o arquivo n\'e3o seja encontrado, garantindo assim que a p\'e1gina n\'e3o funcione corretamente sem o arquivo. Se o arquivo PHP inclu\'eddo for opcional e n\'e3o cr\'edtico para o funcionamento da p\'e1gina, voc\'ea pode usar `include()` porque ele n\'e3o interromper\'e1 o script caso o arquivo n\'e3o seja encontrado, permitindo que a p\'e1gina continue funcionando.\par
+\par
+4. A principal vantagem de usar `require_once` em vez de `require` ao incluir arquivos em uma p\'e1gina PHP \'e9 que `require_once` garante que o arquivo seja inclu\'eddo apenas uma vez, mesmo que seja referenciado em v\'e1rias partes do c\'f3digo. Isso evita erros de redeclara\'e7\'e3o de fun\'e7\'f5es ou vari\'e1veis. Por exemplo, ao incluir um arquivo de configura\'e7\'e3o que define constantes ou fun\'e7\'f5es globais, usando `require_once` garante que esses elementos n\'e3o sejam definidos mais de uma vez, mantendo a integridade do c\'f3digo.\par
+\par
+5. Exemplo de formul\'e1rio HTML usando m\'e9todo POST:\par
+```html\par
+\cf5 <!DOCTYPE html>\par
+<html>\par
+<head>\par
+  <title>Formul\'e1rio de Exemplo</title>\par
+</head>\par
+<body>\par
+  <form action="processa_dados.php" method="post">\par
+    Nome: <input type="text" name="nome"><br>\par
+    Idade: <input type="number" name="idade"><br>\par
+    E-mail: <input type="email" name="email"><br>\par
+    <input type="submit" value="Enviar">\par
+  </form>\par
+</body>\par
+</html>\par
+\cf0 ```\par
+Na p\'e1gina PHP `processa_dados.php`, voc\'ea pode acessar os dados enviados pelo formul\'e1rio usando `$_POST`. Por exemplo:\par
+```php\par
+\cf5 <?php\par
+$nome = $_POST["nome"];\par
+$idade = $_POST["idade"];\par
+$email = $_POST["email"];\par
+\par
+echo "Nome: $nome<br>";\par
+echo "Idade: $idade<br>";\par
+echo "E-mail: $email<br>";\par
+?>\par
+\cf0 ```\par
+\par
+6. `<form action=\rdblquote pag.php\rdblquote  method=\rdblquote POST\rdblquote >`: Esta linha de comando define um formul\'e1rio HTML que enviar\'e1 os dados para uma p\'e1gina PHP chamada `pag.php` usando o m\'e9todo POST quando o formul\'e1rio for submetido.\par
+\par
+7. O m\'e9todo usado para enviar dados via URL \'e9 o m\'e9todo GET.\par
+\par
+8. A principal diferen\'e7a entre include e require \'e9 que o include permite que o script continue a ser executado mesmo se o arquivo inclu\'eddo n\'e3o for encontrado, enquanto o require interrompe a execu\'e7\'e3o do script com um erro fatal caso o arquivo n\'e3o seja encontrado.\par
+\par
+9. Um cen\'e1rio hipot\'e9tico em que o uso do m\'e9todo GET para enviar dados de um formul\'e1rio seria inadequado devido \'e0 natureza dos dados \'e9 ao lidar com informa\'e7\'f5es sens\'edveis, como senhas ou dados pessoais. Como o m\'e9todo GET anexa os dados \'e0 URL, eles podem ser facilmente interceptados e visualizados por terceiros, o que representa um risco de seguran\'e7a. Portanto, o m\'e9todo POST seria mais adequado nestes casos, j\'e1 que os dados s\'e3o enviados no corpo da requisi\'e7\'e3o e n\'e3o s\'e3o vis\'edveis na URL.\par
+\par
+10. Comparando os m\'e9todos de envio GET e POST:\par
+   - Seguran\'e7a: O m\'e9todo POST \'e9 considerado mais seguro do que o m\'e9todo GET, especialmente para dados sens\'edveis, pois os dados n\'e3o s\'e3o expostos na URL.\par
+   - Tipos de dados: Ambos os m\'e9todos podem transmitir uma ampla variedade de tipos de dados, incluindo texto, n\'fameros, arquivos e outros. No entanto, o m\'e9todo POST \'e9 mais adequado para enviar grandes quantidades de dados ou dados sens\'edveis, devido \'e0 sua natureza de n\'e3o expor os dados na URL.\par
+   - Exemplos de uso: O m\'e9todo GET \'e9 frequentemente utilizado para solicita\'e7\'f5es simples, como pesquisas ou navega\'e7\'e3o entre p\'e1ginas, onde a visibilidade dos par\'e2metros na URL n\'e3o \'e9 um problema. O m\'e9todo POST \'e9 mais comumente utilizado para enviar dados de formul\'e1rios, especialmente quando se trata de informa\'e7\'f5es sens\'edveis ou grandes volumes de dados.\cf5\par
+}
+ 
