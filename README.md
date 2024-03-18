@@ -17,6 +17,9 @@ Faça 5 perguntas em sequência;
 Na última página exiba o resultado com a quantidade de acertos do participante juntamente
 com um botão para zerar o resultado e voltar ao início.
 
+Questionário sobre o tema:
+https://kahoot.it/challenge/06111257?challenge-id=b4c24f45-a0df-4a6b-892a-ebc36c43780b_1710794561744
+
 Receber atividade
 
 https://almeida-cma.github.io/receber/
