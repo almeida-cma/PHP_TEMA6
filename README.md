@@ -23,3 +23,17 @@ https://almeida-cma.github.io/receber/
 
 Para atividade do Market:
 https://kahoot.it/challenge/09269396?challenge-id=b4c24f45-a0df-4a6b-892a-ebc36c43780b_1710771222980
+
+GLOSSÁRIO:
+
+Pasta DESAFIO-QUIZ: Exemplo com modelo com 3 perguntas;
+
+Pasta market: Exemplo de portal de vendas buscando informações do banco de dados;
+
+market_admin: Exemplo de administração da base de dados "Produtos" para o portal de vendas;
+
+Desafios.rtf: Parte dos códigos para seguir com a finalização das atividades GET, POST e INCLUDE;
+
+TEMA-6.rtf: resumo sobre GET, POST, INCLUDE e REQUIRE;
+
+query_market.txt: script para criar tabela "Produtos" num banco MySQL denominado "banco_de_dados".
