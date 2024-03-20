@@ -1,0 +1,528 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1046{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\colortbl ;\red0\green77\blue187;}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sl240\slmult1\qj\b\f0\fs28\lang22 1) pages/index.php\par
+\b0\fs22\par
+\cf1 <?php include_once '../templates/header.php'; ?>\par
+\par
+<h2>Produtos Dispon\'edveis</h2>\par
+\par
+<div class="container">\par
+    <?php\par
+    include_once '../includes/db_connection.php';\par
+\par
+    try \{\par
+        // Seleciona todos os produtos da tabela 'produtos'\par
+        $sql = "SELECT * FROM produtos";\par
+        $stmt = $conn->prepare($sql);\par
+        $stmt->execute();\par
+\par
+        // Exibe os produtos em um loop\par
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) \{\par
+            echo "<div class='produto'>";\par
+            echo "<img src='../uploads/\{$row['imagem']\}' alt='\{$row['produto']\}'>";\par
+            echo "<h3>\{$row['produto']\}</h3>";\par
+            echo "<a href='../pages/product_detail.php?id=\{$row['id']\}'>Detalhes</a>";\par
+            echo "</div>";\par
+        \}\par
+    \} catch(PDOException $e) \{\par
+        echo "Erro na conex\'e3o com o banco de dados: " . $e->getMessage();\par
+    \}\par
+    ?>\par
+</div>\par
+\par
+<?php include_once '../templates/footer.php'; ?>\par
+\cf0\par
+Vou explicar linha por linha o que o c\'f3digo PHP faz:\par
+\par
+\b 1. ```php\par
+   <?php include_once '../templates/header.php'; ?>\par
+   ```\par
+\b0    - Esta linha inclui o conte\'fado do arquivo `'../templates/header.php'` no documento atual. Provavelmente, este arquivo cont\'e9m o cabe\'e7alho HTML comum a todas as p\'e1ginas do site, como a tag `<head>`, barra de navega\'e7\'e3o, etc.\par
+\par
+\b 2. ```html\par
+   <h2>Produtos Dispon\'edveis</h2>\par
+   ```\par
+\b0    - Esta linha exibe um t\'edtulo `<h2>` na p\'e1gina, indicando que \'e9 uma lista de produtos dispon\'edveis.\par
+\par
+\b 3. ```html\par
+   <div class="container">\par
+   ```\par
+\b0    - Abre uma div com a classe CSS "container". Esta div provavelmente \'e9 usada para agrupar e estilizar visualmente os produtos exibidos na p\'e1gina.\par
+\par
+\b 4. ```php\par
+   <?php\par
+   include_once '../includes/db_connection.php';\par
+   ```\par
+\b0    - Esta linha inclui o arquivo `'../includes/db_connection.php'`, que provavelmente cont\'e9m a l\'f3gica para estabelecer uma conex\'e3o com o banco de dados.\par
+\par
+\b 5. ```php\par
+   try \{\par
+   ```\par
+\b0    - In\'edcio de um bloco de c\'f3digo `try`, que \'e9 usado para tentar executar um bloco de c\'f3digo que pode lan\'e7ar exce\'e7\'f5es.\par
+\par
+\b 6. ```php\par
+   $sql = "SELECT * FROM produtos";\par
+   ```\par
+\b0    - Cria uma string SQL que seleciona todos os campos (`*`) da tabela `'produtos'`.\par
+\par
+\b 7. ```php\par
+   $stmt = $conn->prepare($sql);\par
+   ```\par
+\b0    - Prepara uma declara\'e7\'e3o SQL para execu\'e7\'e3o.\par
+\par
+\b 8. ```php\par
+   $stmt->execute();\par
+   ```\par
+\b0    - Executa a declara\'e7\'e3o preparada. Isso vai buscar todos os produtos do banco de dados.\par
+\par
+\b 9. ```php\par
+   while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) \{\par
+   ```\par
+\b0    - Inicia um loop `while` que ir\'e1 iterar sobre os resultados da consulta ao banco de dados, armazenando cada linha em `$row`.\par
+\b\par
+10. ```php\par
+    echo "<div class='produto'>";\par
+    ```\par
+\b0     - Inicia a div que representa um produto na p\'e1gina.\par
+\par
+\b 11. ```php\par
+    echo "<img src='../uploads/\{$row['imagem']\}' alt='\{$row['produto']\}'>";\par
+    ```\par
+\b0     - Exibe uma imagem do produto. O caminho da imagem \'e9 definido pela coluna `'imagem'` da tabela de produtos e o atributo `alt` \'e9 preenchido com o nome do produto.\par
+\par
+\b 12. ```php\par
+    echo "<h3>\{$row['produto']\}</h3>";\par
+    ```\par
+\b0     - Exibe o nome do produto.\par
+\par
+\b 13. ```php\par
+    echo "<a href='../pages/product_detail.php?id=\{$row['id']\}'>Detalhes</a>";\par
+    ```\par
+\b0     - Cria um link para a p\'e1gina de detalhes do produto, passando o `id` do produto via par\'e2metro GET na URL.\par
+\par
+\b 14. ```php\par
+    echo "</div>";\par
+    ```\par
+\b0     - Fecha a div que representa um produto.\par
+\par
+\b 15. ```php\par
+    \} catch(PDOException $e) \{\par
+    ```\par
+\b0     - Captura exce\'e7\'f5es do tipo `PDOException`, caso ocorram durante a execu\'e7\'e3o do bloco `try`.\par
+\par
+\b 16. ```php\par
+    echo "Erro na conex\'e3o com o banco de dados: " . $e->getMessage();\par
+    ```\par
+\b0     - Se uma exce\'e7\'e3o for capturada, exibe uma mensagem de erro indicando o problema.\par
+\par
+\b 17. ```php\par
+    ?>\par
+    ```\par
+\b0     - Finaliza o bloco PHP.\par
+\par
+\b 18. ```html\par
+    </div>\par
+    ```\par
+\b0     - Fecha a div com a classe "container", que agrupa os produtos.\par
+\par
+\b 19. ```php\par
+    <?php include_once '../templates/footer.php'; ?>\par
+    ```\par
+\b0     - Inclui o conte\'fado do arquivo `'../templates/footer.php'`, que provavelmente cont\'e9m o rodap\'e9 HTML comum a todas as p\'e1ginas do site.\par
+\par
+Resumindo, este c\'f3digo PHP est\'e1 sendo usado para exibir uma lista de produtos dispon\'edveis, recuperando esses produtos de um banco de dados e exibindo seus detalhes em uma p\'e1gina da web.\par
+-----------------------------------------------------------------------------------------------------------------------\par
+\b\fs28 2) pages/product_detail.php\par
+\par
+\cf1\b0\fs22 <?php include_once '../templates/header.php'; ?>\par
+\par
+<div class="product-detail">\par
+    <?php\par
+    include_once '../includes/db_connection.php';\par
+\par
+    // Verifica se o par\'e2metro de ID do produto foi fornecido na URL\par
+    if (isset($_GET['id'])) \{\par
+        $product_id = $_GET['id'];\par
+\par
+        try \{\par
+            // Consulta para selecionar o produto com base no ID fornecido\par
+            $sql = "SELECT * FROM produtos WHERE id = :id";\par
+            $stmt = $conn->prepare($sql);\par
+            $stmt->bindParam(':id', $product_id);\par
+            $stmt->execute();\par
+            $product = $stmt->fetch(PDO::FETCH_ASSOC);\par
+\par
+            // Verifica se o produto foi encontrado\par
+            if ($product) \{\par
+                // Exibe as informa\'e7\'f5es do produto\par
+                echo "<h2>\{$product['produto']\}</h2>";\par
+                echo "<img src='../uploads/\{$product['imagem']\}' alt='\{$product['produto']\}'>";\par
+                echo "<p>R$ \{$product['valor']\}</p>";\par
+                echo "<form action='../pages/cart.php' method='post'>";\par
+                echo "<input type='hidden' name='product_id' value='\{$product['id']\}'>";\par
+                echo "<input type='hidden' name='product_name' value='\{$product['produto']\}'>"; // Corrigindo este campo oculto\par
+                echo "<input type='hidden' name='product_price' value='\{$product['valor']\}'>"; // Corrigindo este campo oculto\par
+                echo "<label for='quantity'>Quantidade:</label>";\par
+                echo "<input type='number' id='quantity' name='quantity' value='1' min='1'>";\par
+                echo "<button type='submit'>Adicionar ao Carrinho</button>";\par
+                echo "</form>";\par
+            \} else \{\par
+                echo "Produto n\'e3o encontrado.";\par
+            \}\par
+        \} catch(PDOException $e) \{\par
+            echo "Erro na conex\'e3o com o banco de dados: " . $e->getMessage();\par
+        \}\par
+    \} else \{\par
+        echo "ID do produto n\'e3o fornecido.";\par
+    \}\par
+    ?>\par
+</div>\par
+\par
+<?php include_once '../templates/footer.php'; ?>\par
+\par
+\cf0 Vamos analisar linha por linha o que este c\'f3digo PHP faz:\par
+\par
+\b 1. ```php\par
+   <?php include_once '../templates/header.php'; ?>\par
+   ```\par
+\b0    - Inclui o conte\'fado do arquivo `'../templates/header.php'` no documento atual. Isso geralmente cont\'e9m o cabe\'e7alho HTML padr\'e3o de todas as p\'e1ginas do site.\par
+\b\par
+2. ```html\par
+   <div class="product-detail">\par
+   ```\par
+\b0    - Abre uma div com a classe CSS "product-detail". Isso provavelmente ser\'e1 usada para estilizar visualmente os detalhes do produto na p\'e1gina.\par
+\par
+\b 3. ```php\par
+   <?php\par
+   include_once '../includes/db_connection.php';\par
+   ```\par
+\b0    - Inclui o arquivo `'../includes/db_connection.php'`, que cont\'e9m a l\'f3gica para estabelecer uma conex\'e3o com o banco de dados.\par
+\b\par
+4. ```php\par
+   if (isset($_GET['id'])) \{\par
+   ```\par
+\b0    - Verifica se o par\'e2metro de ID do produto foi fornecido na URL. Se sim, continua com a exibi\'e7\'e3o dos detalhes do produto.\par
+\par
+\b 5. ```php\par
+   $product_id = $_GET['id'];\par
+   ```\par
+\b0    - Obt\'e9m o valor do par\'e2metro 'id' passado na URL e o armazena na vari\'e1vel `$product_id`.\par
+\par
+\b 6. ```php\par
+   try \{\par
+   ```\par
+\b0    - In\'edcio de um bloco `try`, usado para tentar executar um bloco de c\'f3digo que pode lan\'e7ar exce\'e7\'f5es.\par
+\par
+\b 7. ```php\par
+   $sql = "SELECT * FROM produtos WHERE id = :id";\par
+   ```\par
+\b0    - Cria uma string SQL para selecionar todos os campos (`*`) da tabela 'produtos' onde o ID \'e9 igual ao valor do par\'e2metro `:id`.\par
+\par
+\b 8. ```php\par
+   $stmt = $conn->prepare($sql);\par
+   $stmt->bindParam(':id', $product_id);\par
+   $stmt->execute();\par
+   $product = $stmt->fetch(PDO::FETCH_ASSOC);\par
+   ```\par
+\b0    - Prepara e executa a consulta SQL, passando o valor do ID como um par\'e2metro. Em seguida, obt\'e9m os detalhes do produto da consulta e os armazena em `$product`.\par
+\par
+\b 9. ```php\par
+   if ($product) \{\par
+   ```\par
+\b0    - Verifica se o produto foi encontrado no banco de dados.\par
+\b\par
+10. ```php\par
+    echo "<h2>\{$product['produto']\}</h2>";\par
+    echo "<img src='../uploads/\{$product['imagem']\}' alt='\{$product['produto']\}'>";\par
+    echo "<p>R$ \{$product['valor']\}</p>";\par
+    ```\par
+\b0     - Exibe o nome do produto, a imagem e o pre\'e7o.\par
+\par
+\b 11. ```php\par
+    echo "<form action='../pages/cart.php' method='post'>";\par
+    ```\par
+\b0     - Inicia um formul\'e1rio que enviar\'e1 os dados do produto para a p\'e1gina do carrinho.\par
+\par
+\b 12. ```php\par
+    echo "<input type='hidden' name='product_id' value='\{$product['id']\}'>";\par
+    echo "<input type='hidden' name='product_name' value='\{$product['produto']\}'>"; // Corrigindo este campo oculto\par
+    echo "<input type='hidden' name='product_price' value='\{$product['valor']\}'>"; // Corrigindo este campo oculto\par
+    ```\par
+\b0     - Insere campos ocultos para enviar o ID, o nome e o pre\'e7o do produto para a p\'e1gina do carrinho.\par
+\par
+\b 13. ```php\par
+    echo "<label for='quantity'>Quantidade:</label>";\par
+    echo "<input type='number' id='quantity' name='quantity' value='1' min='1'>";\par
+    ```\par
+\b0     - Exibe um campo para o usu\'e1rio inserir a quantidade desejada do produto.\par
+\par
+\b 14. ```php\par
+    echo "<button type='submit'>Adicionar ao Carrinho</button>";\par
+    echo "</form>";\par
+    ```\par
+\b0     - Exibe um bot\'e3o de envio para adicionar o produto ao carrinho.\par
+\par
+\b 15. ```php\par
+    \} else \{\par
+        echo "Produto n\'e3o encontrado.";\par
+    \}\par
+    ```\par
+\b0     - Se o produto n\'e3o for encontrado no banco de dados, exibe uma mensagem indicando isso.\par
+\par
+\b 16. ```php\par
+    \} catch(PDOException $e) \{\par
+        echo "Erro na conex\'e3o com o banco de dados: " . $e->getMessage();\par
+    \}\par
+    ```\par
+\b0     - Captura exce\'e7\'f5es do tipo `PDOException`, caso ocorram durante a execu\'e7\'e3o do bloco `try`.\par
+\par
+\b 17. ```php\par
+    \} else \{\par
+        echo "ID do produto n\'e3o fornecido.";\par
+    \}\par
+    ```\par
+\b0     - Se o par\'e2metro de ID do produto n\'e3o foi fornecido na URL, exibe uma mensagem indicando isso.\par
+\par
+\b 18. ```html\par
+    </div>\par
+    ```\par
+\b0     - Fecha a div "product-detail".\par
+\par
+\b 19. ```php\par
+    <?php include_once '../templates/footer.php'; ?>\par
+    ```\par
+\b0     - Inclui o conte\'fado do arquivo `'../templates/footer.php'`, que provavelmente cont\'e9m o rodap\'e9 HTML comum a todas as p\'e1ginas do site.\par
+\par
+Em resumo, o c\'f3digo \'e9 parte de uma aplica\'e7\'e3o de com\'e9rcio eletr\'f4nico que permite aos usu\'e1rios visualizar e adicionar produtos ao carrinho de compras.\par
+------------------------------------------------------------------------------------------------------------------------\par
+\b\fs28 3) pages/cart.php\par
+\fs22\par
+\cf1\b0 <?php\par
+include_once '../templates/header.php';\par
+session_start();\par
+\par
+// Verifica se existe um carrinho na sess\'e3o\par
+if (!isset($_SESSION['cart'])) \{\par
+    $_SESSION['cart'] = [];\par
+\}\par
+\par
+// Adiciona o produto ao carrinho quando o formul\'e1rio \'e9 enviado\par
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id'])) \{\par
+    $product_id = $_POST['product_id'];\par
+    $quantity = $_POST['quantity'];\par
+    $product_name = $_POST['product_name'];\par
+    $product_price = $_POST['product_price'];\par
+\par
+    // Verifica se o produto j\'e1 est\'e1 no carrinho\par
+    if (isset($_SESSION['cart'][$product_id])) \{\par
+        // Se o produto j\'e1 estiver no carrinho, apenas atualize a quantidade\par
+        $_SESSION['cart'][$product_id]['quantity'] += $quantity;\par
+    \} else \{\par
+        // Se o produto n\'e3o estiver no carrinho, adicione-o com a quantidade especificada\par
+        $_SESSION['cart'][$product_id] = [\par
+            'name' => $product_name,\par
+            'price' => $product_price,\par
+            'quantity' => $quantity\par
+        ];\par
+    \}\par
+\}\par
+\par
+echo "<h2>Carrinho de Compras</h2>";\par
+\par
+// Bot\'e3o para limpar o carrinho\par
+echo "<form action='' method='post'>";\par
+echo "<input type='hidden' name='clear_cart' value='true'>";\par
+echo "<button type='submit'>Limpar Carrinho</button>";\par
+echo "</form>";\par
+\par
+// Verifica se o bot\'e3o "Limpar Carrinho" foi acionado\par
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['clear_cart'])) \{\par
+    // Remove todos os itens do carrinho\par
+    $_SESSION['cart'] = [];\par
+    // Recarrega a p\'e1gina para refletir as mudan\'e7as\par
+    header('Location: cart.php');\par
+    exit();\par
+\}\par
+\par
+// Verifica se o carrinho est\'e1 vazio\par
+if (empty($_SESSION['cart'])) \{\par
+    echo "<p>O carrinho est\'e1 vazio.</p>";\par
+\} else \{\par
+    // Inicializa vari\'e1veis para o total de itens e o total geral da compra\par
+    $total_items = 0;\par
+    $total_price = 0;\par
+\par
+    echo "<ul>";\par
+    foreach ($_SESSION['cart'] as $product_id => $product) \{\par
+        // Certifica-se de que $product \'e9 um array antes de acessar seus elementos\par
+        if (is_array($product) && array_key_exists('name', $product) && array_key_exists('price', $product) && array_key_exists('quantity', $product)) \{\par
+            // Calcula o subtotal do produto\par
+            $subtotal = $product['price'] * $product['quantity'];\par
+\par
+            // Exibe os detalhes do produto\par
+            echo "<li>\{$product['name']\} - R$ \{$product['price']\} x \{$product['quantity']\} = R$ $subtotal</li>";\par
+\par
+            // Adiciona a quantidade de itens e o subtotal ao total geral da compra\par
+            $total_items += $product['quantity'];\par
+            $total_price += $subtotal;\par
+        \}\par
+    \}\par
+    echo "</ul>";\par
+\par
+    // Exibe o total de itens e o total geral da compra\par
+    echo "<p>Total de Itens: $total_items</p>";\par
+    echo "<p>Total: R$ $total_price</p>";\par
+\}\par
+\par
+include_once '../templates/footer.php';\par
+?>\par
+\cf0\par
+Vamos analisar cada linha do c\'f3digo PHP fornecido:\par
+\par
+\b 1. ```php\par
+   <?php\par
+   ```\par
+\b0    - In\'edcio do bloco PHP.\par
+\par
+\b 2. ```php\par
+   include_once '../templates/header.php';\par
+   ```\par
+\b0    - Inclui o cabe\'e7alho do site, que provavelmente cont\'e9m a estrutura HTML comum a todas as p\'e1ginas, como tags `<head>` e `<header>`.\par
+\par
+\b 3. ```php\par
+   session_start();\par
+   ```\par
+\b0    - Inicia ou retoma a sess\'e3o do PHP. Isso \'e9 necess\'e1rio para usar vari\'e1veis de sess\'e3o para manter o estado do carrinho de compras.\par
+\par
+\b 4. ```php\par
+   if (!isset($_SESSION['cart'])) \{\par
+       $_SESSION['cart'] = [];\par
+   \}\par
+   ```\par
+\b0    - Verifica se existe uma vari\'e1vel de sess\'e3o chamada `'cart'`, que armazena os itens do carrinho de compras. Se n\'e3o existir, inicializa-a como um array vazio.\par
+\par
+\b 5. ```php\par
+   if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id'])) \{\par
+   ```\par
+\b0    - Verifica se o m\'e9todo de requisi\'e7\'e3o \'e9 POST e se foi enviado um campo `product_id` no formul\'e1rio. Isso indica que um produto est\'e1 sendo adicionado ao carrinho.\par
+\par
+\b 6. ```php\par
+   $product_id = $_POST['product_id'];\par
+   $quantity = $_POST['quantity'];\par
+   $product_name = $_POST['product_name'];\par
+   $product_price = $_POST['product_price'];\par
+   ```\par
+\b0    - Obt\'e9m os valores dos campos do formul\'e1rio POST que representam o ID, a quantidade, o nome e o pre\'e7o do produto a ser adicionado ao carrinho.\par
+\par
+\b 7. ```php\par
+   if (isset($_SESSION['cart'][$product_id])) \{\par
+   ```\par
+\b0    - Verifica se o produto j\'e1 est\'e1 presente no carrinho de compras.\par
+\par
+\b 8. ```php\par
+   $_SESSION['cart'][$product_id]['quantity'] += $quantity;\par
+   ```\par
+\b0    - Se o produto j\'e1 estiver no carrinho, apenas atualiza a quantidade do produto.\par
+\par
+\b 9. ```php\par
+   \} else \{\par
+       $_SESSION['cart'][$product_id] = [\par
+           'name' => $product_name,\par
+           'price' => $product_price,\par
+           'quantity' => $quantity\par
+       ];\par
+   \}\par
+   ```\par
+\b0    - Se o produto n\'e3o estiver no carrinho, adiciona-o ao carrinho com a quantidade especificada.\par
+\par
+\b 10. ```php\par
+    echo "<h2>Carrinho de Compras</h2>";\par
+    ```\par
+\b0     - Exibe um t\'edtulo indicando que \'e9 a se\'e7\'e3o do carrinho de compras.\par
+\b\par
+11. ```php\par
+    echo "<form action='' method='post'>";\par
+    ```\par
+\b0     - Inicia um formul\'e1rio para permitir a limpeza do carrinho.\par
+\par
+\b 12. ```php\par
+    echo "<input type='hidden' name='clear_cart' value='true'>";\par
+    echo "<button type='submit'>Limpar Carrinho</button>";\par
+    echo "</form>";\par
+    ```\par
+\b0     - Cria um bot\'e3o dentro do formul\'e1rio para limpar o carrinho de compras.\par
+\par
+\b 13. ```php\par
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['clear_cart'])) \{\par
+    ```\par
+\b0     - Verifica se o formul\'e1rio para limpar o carrinho foi enviado.\par
+\par
+\b 14. ```php\par
+    $_SESSION['cart'] = [];\par
+    ```\par
+\b0     - Remove todos os itens do carrinho de compras.\par
+\par
+\b 15. ```php\par
+    header('Location: cart.php');\par
+    exit();\par
+    ```\par
+\b0     - Redireciona o usu\'e1rio de volta para a p\'e1gina do carrinho ap\'f3s limpar o carrinho.\par
+\par
+\b 16. ```php\par
+    if (empty($_SESSION['cart'])) \{\par
+        echo "<p>O carrinho est\'e1 vazio.</p>";\par
+    \} else \{\par
+    ```\par
+\b0     - Verifica se o carrinho est\'e1 vazio ou n\'e3o.\par
+\b\par
+17. ```php\par
+    foreach ($_SESSION['cart'] as $product_id => $product) \{\par
+    ```\par
+\b0     - Itera sobre todos os itens presentes no carrinho de compras.\par
+\par
+\b 18. ```php\par
+    if (is_array($product) && array_key_exists('name', $product) && array_key_exists('price', $product) && array_key_exists('quantity', $product)) \{\par
+    ```\par
+\b0     - Verifica se o item do carrinho \'e9 um array e se ele cont\'e9m chaves espec\'edficas (nome, pre\'e7o e quantidade).\par
+\par
+\b 19. ```php\par
+    $subtotal = $product['price'] * $product['quantity'];\par
+    ```\par
+\b0     - Calcula o subtotal do produto (pre\'e7o multiplicado pela quantidade).\par
+\par
+\b 20. ```php\par
+    echo "<li>\{$product['name']\} - R$ \{$product['price']\} x \{$product['quantity']\} = R$ $subtotal</li>";\par
+    ```\par
+\b0     - Exibe os detalhes do produto, incluindo nome, pre\'e7o, quantidade e subtotal.\par
+\par
+\b 21. ```php\par
+    $total_items += $product['quantity'];\par
+    $total_price += $subtotal;\par
+    ```\par
+\b0     - Atualiza o total de itens e o pre\'e7o total da compra.\par
+\b\par
+22. ```php\par
+    echo "</ul>";\par
+    ```\par
+\b0     - Fecha a lista de itens do carrinho.\par
+\par
+\b 23. ```php\par
+    echo "<p>Total de Itens: $total_items</p>";\par
+    echo "<p>Total: R$ $total_price</p>";\par
+    ```\par
+\b0     - Exibe o total de itens e o pre\'e7o total da compra.\par
+\par
+\b 24. ```php\par
+    include_once '../templates/footer.php';\par
+    ```\par
+\b0     - Inclui o rodap\'e9 do site, que provavelmente cont\'e9m o fechamento das tags HTML, scripts e outros elementos comuns a todas as p\'e1ginas. \par
+\b\par
+25. ```php\par
+    ?>\par
+    ```\par
+\b0     - Fim do bloco PHP.\par
+\par
+Em ess\'eancia, o c\'f3digo permite aos usu\'e1rios adicionar produtos ao carrinho, visualizar o conte\'fado do carrinho, atualizar quantidades e remover produtos, proporcionando uma experi\'eancia de compra interativa em um site.\par
+}
+ 
