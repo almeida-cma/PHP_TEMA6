@@ -18,7 +18,7 @@ Na última página exiba o resultado com a quantidade de acertos do participante
 com um botão para zerar o resultado e voltar ao início.
 
 Questionário sobre o tema:
-https://kahoot.it/challenge/06111257?challenge-id=b4c24f45-a0df-4a6b-892a-ebc36c43780b_1710794561744
+https://kahoot.it/challenge/09181619?challenge-id=b4c24f45-a0df-4a6b-892a-ebc36c43780b_1730479037121
 
 Receber atividade
 
